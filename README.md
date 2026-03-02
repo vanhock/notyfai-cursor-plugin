@@ -1,8 +1,8 @@
 # Notyfai
 
-Push notifications to your phone when Cursor AI agents finish or need your permission.
+Get push notifications on your phone, telegram, whatever when a Cursor agent needs you or has finished—so you can step away and still respond when it’s waiting for approval or done.
 
-Notyfai is a Cursor plugin that sends agent events to the Notyfai backend. When the agent is blocked (e.g. waiting for shell or MCP permission) or stops, you get a push notification on your mobile device.
+Notyfai is a Cursor plugin that forwards agent events to your service. You get a push when the agent is **blocked** (e.g. waiting for shell, MCP, or file approval) and when the agent **stops**. No need to keep Cursor in the foreground; your phone tells you when to come back. **Secure and simple:** your hook URL stays on your machine or in env; no code or secrets are sent—just event payloads to your private endpoint.
 
 ## Install
 
@@ -10,24 +10,16 @@ Notyfai is a Cursor plugin that sends agent events to the Notyfai backend. When 
    Open the marketplace in Cursor, search for **Notyfai**, and install the plugin.
 
 2. **Get the Notyfai app**  
-   Install the Notyfai mobile app and sign in. From the app you get a unique hook URL for your account.
+   Install the Notyfai mobile app for iOS or Android (coming soon!) and sign in. From the app you get a unique hook URL for your account.
 
 3. **Configure the hook URL**  
    The plugin script needs your hook URL. Choose one:
 
-   - **Global (recommended):** Run in a terminal (use the copy command from the app):
-     ```bash
-     echo 'YOUR_HOOK_URL' > ~/.cursor/notyfai-url
-     ```
-   - **Environment variable:** In `~/.zshrc` or `~/.bashrc`:
-     ```bash
-     export NOTYFAI_HOOK_URL='YOUR_HOOK_URL'
-     ```
-   - **Per project:** From the project root:
+   - Open Cursor terminal from the project root and run:
      ```bash
      echo 'YOUR_HOOK_URL' > .cursor/notyfai-url
      ```
-     Add `.cursor/notyfai-url` to `.gitignore` so the URL is not committed.
+   - Add `.cursor/notyfai-url` to `.gitignore` so the URL is not committed.
 
 4. **Restart Cursor** so it loads the plugin and hooks.
 
@@ -38,9 +30,9 @@ Notyfai is a Cursor plugin that sends agent events to the Notyfai backend. When 
 
 All other hook events (session start/end, tool use, file edits, etc.) are sent to the backend for execution tracking and history; they do not trigger push notifications by themselves.
 
-## Full setup and troubleshooting
+## Setup your own server
 
-For manual setup without the plugin, localhost notes, and troubleshooting (no notifications, token issues, push not received), see the [main Notyfai repo](https://github.com/notyfai/notyfai) (e.g. `docs/configure-hook.md`).
+You can self-host your own server, setup hook manualy using a script from this repo [main Notyfai repo](https://github.com/vanhock/notyfai) (e.g. `docs/configure-hook.md`).
 
 ## License
 
